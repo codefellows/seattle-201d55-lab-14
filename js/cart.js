@@ -1,4 +1,4 @@
-/* global Cart */
+/* global Cart, Product */
 'use strict';
 
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
@@ -19,14 +19,38 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  document.querySelector('tbody').textContent = '';
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // TODO: Find the table body
 
+  var tbody = document.querySelector('tbody');
   // TODO: Iterate over the items in the cart
+  for (var i = 0; i < cart.items.length; i++) {
+    var tr = document.createElement('tr');
+    var del = document.createElement('td');
+    del.textContent = 'X';
+    del.dataset.potato = i;
+    var quantity = document.createElement('td');
+    quantity.textContent = cart.items[i].quantity;
+    var item = document.createElement('td');
+
+    var product = Product.allProducts[cart.items[i].product];
+    item.textContent = product.name;
+    var img = document.createElement('img');
+    img.src = product.filePath;
+    item.appendChild(img);
+
+    tr.appendChild(del);
+    tr.appendChild(quantity);
+    tr.appendChild(item);
+
+    tbody.appendChild(tr);
+  }
   // TODO: Create a TR
   // TODO: Create a TD for the delete link, quantity,  and the item
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
@@ -35,6 +59,11 @@ function showCart() {
 
 function removeItemFromCart(event) {
 
+  if(event.target.textContent === 'X') {
+    cart.removeItem(event.target.dataset.potato);
+    cart.saveToLocalStorage();
+    renderCart();
+  }
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table

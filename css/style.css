@@ -42,3 +42,7 @@ label {
 th {
   border: 2px dotted #BFF;
 }
+
+img {
+  max-width: 50px;
+}
