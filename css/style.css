@@ -1,1 +1,44 @@
-/* TODO: Make it awesome */
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+nav li {
+  display: inline-block;
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.deck {
+  width: 75%;
+  margin: 0px auto;
+}
+
+.col-2 {
+  margin-top: 20px;
+}
+
+footer {
+  clear: both;
+  margin: 20px;
+}
+
+footer p {
+  display: inline;
+  margin: 0px auto;
+}
+
+legend {
+  font-size: 1.5em;
+}
+
+label {
+  display: block;
+}
+
+th {
+  border: 2px dotted #BFF;
+}
